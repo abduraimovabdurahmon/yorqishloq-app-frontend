@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useRef, useCallback } from 'react';
+import { createContext, useContext, useState, useRef, useCallback, useLayoutEffect } from 'react';
 import { getTheme, setTheme as applyTheme } from './theme.js';
+import { getLang, saveLang, applyLang } from './i18n.js';
 
 const AppCtx = createContext(null);
 export const useApp = () => useContext(AppCtx);
@@ -37,10 +38,16 @@ export function AppProvider({ children }) {
   const [toastMsg, setToastMsg] = useState('');
   const [toastOn, setToastOn] = useState(false);
   const [theme, setThemeState] = useState(getTheme);
+  const [lang, setLangState] = useState(getLang);
   const toastTimer = useRef(null);
 
   // Persist + apply the theme (handled by theme.js), then mirror it into state.
   const setTheme = useCallback((t) => { setThemeState(applyTheme(t)); haptic('select'); }, []);
+  const setLang = useCallback((l) => { saveLang(l); setLangState(l); haptic('select'); }, []);
+
+  // Transliterate the live DOM to match the chosen language. useLayoutEffect so
+  // the conversion happens before paint (no flash) on both load and navigation.
+  useLayoutEffect(() => { applyLang(lang); });
 
   const go = useCallback((id) => { setAnim('anim-push'); setStack((s) => [...s, id]); haptic('light'); }, []);
   const back = useCallback(() => { setAnim('anim-tab'); setStack((s) => (s.length > 1 ? s.slice(0, -1) : s)); haptic('light'); }, []);
@@ -62,7 +69,7 @@ export function AppProvider({ children }) {
   const value = {
     stack, anim, depth: stack.length, current: stack[stack.length - 1],
     sel, setState, go, back, tab, toast, toastMsg, toastOn,
-    theme, setTheme,
+    theme, setTheme, lang, setLang,
   };
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;
 }
