@@ -45,8 +45,7 @@ export default function Profile() {
             <MenuRow icon="favorite" label="Sevimlilar" />
             <MenuRow icon="location_on" label="Manzillarim" />
             <MenuRow icon="notifications" label="Bildirishnomalar" />
-            <MenuRow icon="dark_mode" label="Ko'rinish" onClick={() => go('settings')} right={<span style={css('display:flex; align-items:center; gap:4px; font-size:13px; font-weight:600; color:var(--muted-2);')}>{themeLabel}<Icon s="chevron_right" style={{ fontSize: 20, color: 'var(--faint)' }} /></span>} />
-            <MenuRow icon="logout" label="Chiqish" danger right={<span />} last />
+            <MenuRow icon="dark_mode" label="Ko'rinish" onClick={() => go('settings')} right={<span style={css('display:flex; align-items:center; gap:4px; font-size:13px; font-weight:600; color:var(--muted-2);')}>{themeLabel}<Icon s="chevron_right" style={{ fontSize: 20, color: 'var(--faint)' }} /></span>} last />
           </div>
         </div>
       </div>
