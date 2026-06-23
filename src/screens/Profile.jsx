@@ -1,0 +1,54 @@
+import { useApp } from '../state.jsx';
+import { Screen, Icon } from '../components.jsx';
+import { css } from '../util.js';
+
+export default function Profile() {
+  const { toast } = useApp();
+  const InfoRow = ({ icon, label, val, extra, last }) => (
+    <div className="press" onClick={() => toast(label)} style={css(`display:flex; align-items:center; gap:13px; padding:14px 16px; ${last ? '' : 'border-bottom:1px solid #F4F3F1;'}`)}>
+      <Icon s={icon} style={{ width: 38, height: 38, flex: 'none', borderRadius: 11, background: 'var(--accentSoft)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, color: 'var(--accent)' }} />
+      <div style={css('flex:1;')}><div style={css('font-size:11.5px; font-weight:600; color:#A8A29E;')}>{label}</div><div style={css('font-size:14.5px; font-weight:700; color:#1C1917; margin-top:1px;')}>{val}</div></div>
+      {extra}
+    </div>
+  );
+  const MenuRow = ({ icon, label, danger, right, last }) => (
+    <div className="press" onClick={() => toast(label)} style={css(`display:flex; align-items:center; gap:13px; padding:14px 16px; ${last ? '' : 'border-bottom:1px solid #F4F3F1;'}`)}>
+      <Icon s={icon} style={{ fontSize: 22, color: danger ? '#DC2626' : '#78716C' }} />
+      <span style={css(`flex:1; font-size:14.5px; font-weight:700; color:${danger ? '#DC2626' : '#1C1917'};`)}>{label}</span>
+      {right !== undefined ? right : <Icon s="chevron_right" style={{ fontSize: 20, color: '#D6D3D1' }} />}
+    </div>
+  );
+  return (
+    <Screen>
+      <div className="hdr"><span className="title">Profil</span><span className="act-r" onClick={() => toast('Sozlamalar')}><Icon s="settings" style={{ fontSize: 23, color: '#78716C' }} /></span></div>
+      <div className="scroll">
+        <div style={css('padding:24px 18px 22px; background:#FFFFFF; display:flex; flex-direction:column; align-items:center;')}>
+          <div style={css('position:relative;')}>
+            <div style={css('width:96px; height:96px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:700; color:#FFFFFF; box-shadow:0 6px 16px rgba(249,115,22,0.16);')}>AA</div>
+            <span className="press" onClick={() => toast("Rasm o'zgartirish")} style={css('position:absolute; right:-2px; bottom:-2px; width:32px; height:32px; border-radius:50%; background:#FFFFFF; border:2px solid #FAFAF9; display:flex; align-items:center; justify-content:center;')}><Icon s="photo_camera" style={{ fontSize: 17, color: 'var(--accent)' }} /></span>
+          </div>
+          <div style={css('font-size:21px; font-weight:700; color:#1C1917; margin-top:14px; letter-spacing:-0.3px;')}>Abduraimov Abduraxmon</div>
+          <div style={css('display:flex; align-items:center; gap:5px; margin-top:5px;')}><Icon s="location_on" style={{ fontSize: 16, color: 'var(--accent)' }} /><span style={css('font-size:13.5px; font-weight:600; color:#78716C;')}>Yorqishloq, Jalaquduq</span></div>
+          <div className="press" onClick={() => toast('Profilni tahrirlash')} style={css('display:flex; align-items:center; gap:6px; height:34px; padding:0 14px; margin-top:14px; border-radius:11px; background:var(--accentSoft); font-size:13px; font-weight:700; color:var(--accentDeep);')}><Icon s="edit" style={{ fontSize: 17 }} />Profilni tahrirlash</div>
+        </div>
+        <div style={css('padding:18px 18px 4px;')}>
+          <div style={css('font-size:12px; font-weight:700; color:#A8A29E; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:10px; padding-left:4px;')}>Shaxsiy ma'lumotlar</div>
+          <div style={css('background:#FFFFFF; border:1px solid #F1EFED; border-radius:18px; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,0.04);')}>
+            <InfoRow icon="call" label="Telefon raqam" val="+998 90 142 73 95" extra={<Icon s="verified" style={{ fontSize: 18, color: '#16A34A' }} />} />
+            <InfoRow icon="alternate_email" label="Telegram" val="@abdurakhmon_john" />
+            <InfoRow icon="cake" label="Tug'ilgan sana" val="7-yanvar, 2004" last />
+          </div>
+        </div>
+        <div style={css('padding:16px 18px 18px;')}>
+          <div style={css('background:#FFFFFF; border:1px solid #F1EFED; border-radius:18px; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,0.04);')}>
+            <MenuRow icon="favorite" label="Sevimlilar" />
+            <MenuRow icon="location_on" label="Manzillarim" />
+            <MenuRow icon="notifications" label="Bildirishnomalar" />
+            <MenuRow icon="translate" label="Til" right={<span style={css('font-size:13px; font-weight:600; color:#A8A29E;')}>O'zbekcha</span>} />
+            <MenuRow icon="logout" label="Chiqish" danger right={<span />} last />
+          </div>
+        </div>
+      </div>
+    </Screen>
+  );
+}
