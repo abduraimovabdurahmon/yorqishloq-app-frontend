@@ -14,8 +14,8 @@ const KEY = 'yq-theme';
 const VALID = ['system', 'light', 'dark'];
 
 // Must mirror --surface / --bg in styles.css for the native chrome colors.
-const SURFACE = { light: '#FFFFFF', dark: '#1B1917' };
-const BG = { light: '#FAFAF9', dark: '#100F0E' };
+const SURFACE = { light: '#FFFFFF', dark: '#25211E' };
+const BG = { light: '#FAFAF9', dark: '#1A1715' };
 
 export function getTheme() {
   try {

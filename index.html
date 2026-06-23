@@ -21,7 +21,7 @@
     var sys=(tg&&tg.colorScheme)?tg.colorScheme
       :((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
     var scheme=(t==='dark'||t==='light')?t:sys;
-    var bg=scheme==='dark'?'#100F0E':'#FAFAF9';
+    var bg=scheme==='dark'?'#1A1715':'#FAFAF9';
     document.documentElement.setAttribute('data-theme',scheme);
     document.documentElement.style.backgroundColor=bg;
     var m=document.querySelector('meta[name="theme-color"]');
