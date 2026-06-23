@@ -1,8 +1,59 @@
+/* ============================================================================
+   Theme tokens. Every color in the app resolves to one of these variables, so
+   switching `data-theme` on <html> recolors the whole UI — no element is left
+   hardcoded. `:root` is the light theme; `[data-theme="dark"]` overrides it.
+   Theme selection (system / light / dark, persisted) lives in src/theme.js.
+   ========================================================================== */
 :root{
+  color-scheme:light;
+  /* Brand accent (orange) */
   --accent:#F97316;
   --accentLight:#FFC15E;
   --accentDeep:#EA580C;
   --accentSoft:#FFF3EA;
+  --accentSoftBorder:#FCD9B6;
+  --promo3:#C2410C;
+
+  /* Surfaces & background */
+  --bg:#FAFAF9;
+  --surface:#FFFFFF;
+  --fill:#F4F3F1;
+  --chat-bg:#EFE7DF;
+
+  /* Borders & dividers */
+  --border:#F1EFED;
+  --border-2:#ECEAE7;
+
+  /* Placeholder tiles / decorative grays */
+  --tile-b:#EDEBE8;
+  --tile-c:#E4E1DD;
+  --dot:#E3DFDB;
+  --faint:#D6D3D1;
+
+  /* Text scale (strong -> faint) */
+  --text:#1C1917;
+  --text-2:#44403C;
+  --text-3:#57534E;
+  --muted:#78716C;
+  --muted-2:#A8A29E;
+  --text-faint:#C7C2BD;
+
+  /* Foreground on colored/glass surfaces (does not invert) */
+  --on-accent:#FFFFFF;
+  --glass:rgba(255,255,255,0.92);
+  --chat-chip:rgba(28,25,23,0.10);
+  --toast-bg:#1C1917;
+
+  /* Status colors */
+  --success:#16A34A;
+  --success-soft:#E9FBEF;
+  --success-border:#BBF7D0;
+  --online:#22C55E;
+  --danger:#DC2626;
+  --danger-soft:#FFF1F1;
+  --star:#FBBF24;
+  --info:#2563EB;
+
   /* Safe-area insets. Default to CSS env() for plain browsers; inside Telegram
      these get overwritten with the combined device + Telegram-UI insets so the
      app chrome clears the fullscreen close/menu buttons. See src/tg.js. */
@@ -11,12 +62,56 @@
   --tg-safe-left:env(safe-area-inset-left);
   --tg-safe-right:env(safe-area-inset-right);
 }
+
+[data-theme="dark"]{
+  color-scheme:dark;
+  --accent:#F97316;
+  --accentLight:#FFC15E;
+  --accentDeep:#FB923C;
+  --accentSoft:#2A1B0E;
+  --accentSoftBorder:#43301B;
+  --promo3:#C2410C;
+
+  --bg:#100F0E;
+  --surface:#1B1917;
+  --fill:#272320;
+  --chat-bg:#15110D;
+
+  --border:#2B2724;
+  --border-2:#363029;
+
+  --tile-b:#2A2622;
+  --tile-c:#342F2A;
+  --dot:#3A342E;
+  --faint:#4E4842;
+
+  --text:#F3F0ED;
+  --text-2:#D4CEC8;
+  --text-3:#B6AFA8;
+  --muted:#9C938B;
+  --muted-2:#867D75;
+  --text-faint:#615A53;
+
+  --on-accent:#FFFFFF;
+  --glass:rgba(34,31,28,0.82);
+  --chat-chip:rgba(255,255,255,0.10);
+  --toast-bg:#332E2A;
+
+  --success:#3FB54F;
+  --success-soft:#15271B;
+  --success-border:#223D2A;
+  --online:#2EBE4E;
+  --danger:#F26257;
+  --danger-soft:#2E1816;
+  --star:#FBBF24;
+  --info:#5B8DEF;
+}
 *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html,body,#root{ margin:0; height:100%; }
 body{
   font-family:'Plus Jakarta Sans',system-ui,sans-serif;
-  background:#FAFAF9;
-  color:#1C1917;
+  background:var(--bg);
+  color:var(--text);
   overflow:hidden;
 }
 #root{ width:100%; height:100%; }
@@ -34,7 +129,7 @@ body{
   width:100%;
   height:100%;
   height:100dvh;
-  background:#FAFAF9;
+  background:var(--bg);
   overflow:hidden;
   position:relative;
   display:flex;
@@ -43,20 +138,20 @@ body{
 .app{ flex:1; min-height:0; min-width:0; display:flex; flex-direction:column; }
 
 /* Generic screen layout */
-.screen{ flex:1; min-height:0; min-width:0; display:flex; flex-direction:column; background:#FAFAF9; position:relative; }
-.screen.chat-bg{ background:#EFE7DF; }
+.screen{ flex:1; min-height:0; min-width:0; display:flex; flex-direction:column; background:var(--bg); position:relative; }
+.screen.chat-bg{ background:var(--chat-bg); }
 .hdr{
   flex:none; display:flex; align-items:center; justify-content:center;
-  background:#FFFFFF; border-bottom:1px solid #F1EFED; position:relative;
+  background:var(--surface); border-bottom:1px solid var(--border); position:relative;
   height:calc(54px + var(--tg-safe-top));
   padding-top:var(--tg-safe-top);
 }
-.hdr .title{ font-size:16px; font-weight:700; color:#1C1917; }
-.hdr .back{ position:absolute; left:14px; font-size:24px; color:#1C1917; cursor:pointer; }
+.hdr .title{ font-size:16px; font-weight:700; color:var(--text); }
+.hdr .back{ position:absolute; left:14px; font-size:24px; color:var(--text); cursor:pointer; }
 .hdr .act-r{ position:absolute; right:16px; cursor:pointer; }
 .scroll{ flex:1; min-height:0; min-width:0; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; display:flex; flex-direction:column; }
 .footer{
-  flex:none; background:#FFFFFF; border-top:1px solid #F1EFED;
+  flex:none; background:var(--surface); border-top:1px solid var(--border);
   padding-bottom:calc(22px + var(--tg-safe-bottom));
 }
 .scroll::-webkit-scrollbar{ display:none; }
@@ -66,13 +161,13 @@ body{
 
 /* Tab bar */
 .tabbar{
-  flex:none; background:#FFFFFF; border-top:1px solid #F1EFED;
+  flex:none; background:var(--surface); border-top:1px solid var(--border);
   display:flex; align-items:flex-start; padding-top:10px;
   padding-bottom:calc(14px + var(--tg-safe-bottom));
 }
 .tabbar .tab{ flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer; }
-.tabbar .tab .ico{ font-size:25px; color:#A8A29E; }
-.tabbar .tab span.lbl{ font-size:11px; font-weight:600; color:#A8A29E; }
+.tabbar .tab .ico{ font-size:25px; color:var(--muted-2); }
+.tabbar .tab span.lbl{ font-size:11px; font-weight:600; color:var(--muted-2); }
 .tabbar .tab.on .ico{ color:var(--accent); font-variation-settings:'FILL' 1; }
 .tabbar .tab.on span.lbl{ font-weight:700; color:var(--accent); }
 
@@ -83,7 +178,7 @@ body{
 /* Toast */
 .toast{
   position:fixed; left:50%; bottom:96px; transform:translateX(-50%) translateY(20px);
-  background:#1C1917; color:#fff; font-size:13.5px; font-weight:600;
+  background:var(--toast-bg); color:var(--on-accent); font-size:13.5px; font-weight:600;
   padding:11px 18px; border-radius:13px; box-shadow:0 8px 24px rgba(0,0,0,0.25);
   opacity:0; pointer-events:none; transition:opacity .22s ease, transform .22s ease;
   z-index:50; max-width:80%; text-align:center;

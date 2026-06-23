@@ -39,8 +39,8 @@ export function initTelegram() {
   // In fullscreen a vertical swipe can accidentally minimize/close the app.
   safe(() => TG.disableVerticalSwipes && TG.disableVerticalSwipes());
 
-  safe(() => TG.setHeaderColor && TG.setHeaderColor('#FFFFFF'));
-  safe(() => TG.setBackgroundColor && TG.setBackgroundColor('#FAFAF9'));
+  // Header / background / theme-color are owned by the theme controller
+  // (src/theme.js) so they always match the active light/dark theme.
 
   // Keep insets in sync as the layout / fullscreen state changes.
   syncInsets();

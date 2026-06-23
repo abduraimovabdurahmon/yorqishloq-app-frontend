@@ -22,7 +22,7 @@ export function Header({ title, back = false, rightIcon, onRight, onBackTo }) {
       <span className="title">{title}</span>
       {rightIcon && (
         <span className="act-r" onClick={onRight}>
-          <Icon s={rightIcon} style={{ fontSize: 23, color: '#78716C' }} />
+          <Icon s={rightIcon} style={{ fontSize: 23, color: 'var(--muted)' }} />
         </span>
       )}
     </div>
@@ -51,7 +51,7 @@ export function Tabbar({ active }) {
 
 export function Cta({ label, icon, onClick, style }) {
   return (
-    <div className="press" onClick={onClick} style={{ ...css('height:54px; border-radius:14px; background:var(--accent); display:flex; align-items:center; justify-content:center; gap:8px; font-size:16px; font-weight:700; color:#FFFFFF; box-shadow:0 6px 16px rgba(249,115,22,0.18);'), ...(style || {}) }}>
+    <div className="press" onClick={onClick} style={{ ...css('height:54px; border-radius:14px; background:var(--accent); display:flex; align-items:center; justify-content:center; gap:8px; font-size:16px; font-weight:700; color:var(--on-accent); box-shadow:0 6px 16px rgba(249,115,22,0.18);'), ...(style || {}) }}>
       {icon && <Icon s={icon} style={{ fontSize: '22px' }} />}{label}
     </div>
   );
@@ -64,5 +64,5 @@ export function Toast() {
 
 // Simple monospace placeholder label (matches design's placeholder tiles).
 export function Ph({ t, sz = 10 }) {
-  return <span style={{ fontFamily: 'monospace', fontSize: sz + 'px', color: '#A8A29E' }}>{t}</span>;
+  return <span style={{ fontFamily: 'monospace', fontSize: sz + 'px', color: 'var(--muted-2)' }}>{t}</span>;
 }

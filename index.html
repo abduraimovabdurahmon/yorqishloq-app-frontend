@@ -11,6 +11,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0&display=swap" rel="stylesheet">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+/* Apply the saved/system theme before first paint to avoid a light/dark flash.
+   Kept in sync with src/theme.js. */
+(function(){
+  try{
+    var t=localStorage.getItem('yq-theme');
+    var tg=window.Telegram&&window.Telegram.WebApp;
+    var sys=(tg&&tg.colorScheme)?tg.colorScheme
+      :((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
+    var scheme=(t==='dark'||t==='light')?t:sys;
+    var bg=scheme==='dark'?'#100F0E':'#FAFAF9';
+    document.documentElement.setAttribute('data-theme',scheme);
+    document.documentElement.style.backgroundColor=bg;
+    var m=document.querySelector('meta[name="theme-color"]');
+    if(m)m.setAttribute('content',bg);
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
   <div id="root"></div>

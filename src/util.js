@@ -1,5 +1,5 @@
 // Design tokens (for JS-computed styles)
-export const T = { accent: '#F97316', accentLight: '#FFC15E', accentDeep: '#EA580C', accentSoft: '#FFF3EA' };
+export const T = { accent: 'var(--accent)', accentLight: 'var(--accentLight)', accentDeep: 'var(--accentDeep)', accentSoft: 'var(--accentSoft)' };
 
 // Convert a CSS declaration string into a React style object.
 // Keeps the dense, design-faithful inline styles readable while staying valid React.
@@ -25,18 +25,18 @@ export function css(str) {
 export const asset = (p) => import.meta.env.BASE_URL + p;
 
 // Placeholder tile backgrounds (match the design's striped placeholders).
-export const TILE = 'background:repeating-linear-gradient(135deg,#F4F3F1,#F4F3F1 9px,#ECEAE7 9px,#ECEAE7 18px);';
-export const TILE_S = 'background:repeating-linear-gradient(135deg,#F4F3F1,#F4F3F1 7px,#ECEAE7 7px,#ECEAE7 14px);';
-export const TILE_D = 'background:repeating-linear-gradient(135deg,#EDEBE8,#EDEBE8 11px,#E4E1DD 11px,#E4E1DD 22px);';
+export const TILE = 'background:repeating-linear-gradient(135deg,var(--fill),var(--fill) 9px,var(--border-2) 9px,var(--border-2) 18px);';
+export const TILE_S = 'background:repeating-linear-gradient(135deg,var(--fill),var(--fill) 7px,var(--border-2) 7px,var(--border-2) 14px);';
+export const TILE_D = 'background:repeating-linear-gradient(135deg,var(--tile-b),var(--tile-b) 11px,var(--tile-c) 11px,var(--tile-c) 22px);';
 
 // Derived order view-model.
 export function mapOrder(o) {
   const st = ({
-    progress: { bg: '#FFF3EA', color: T.accentDeep },
-    confirmed: { bg: '#FFF3EA', color: T.accentDeep },
-    done: { bg: '#E9FBEF', color: '#16A34A' },
-    cancel: { bg: '#FFF1F1', color: '#DC2626' },
-  })[o.kind] || { bg: '#F4F3F1', color: '#78716C' };
+    progress: { bg: 'var(--accentSoft)', color: T.accentDeep },
+    confirmed: { bg: 'var(--accentSoft)', color: T.accentDeep },
+    done: { bg: 'var(--success-soft)', color: 'var(--success)' },
+    cancel: { bg: 'var(--danger-soft)', color: 'var(--danger)' },
+  })[o.kind] || { bg: 'var(--fill)', color: 'var(--muted)' };
   const rated = !!o.rating;
   return {
     icon: o.icon, title: o.title, sub: o.sub, date: o.date, price: o.price,

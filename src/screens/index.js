@@ -7,6 +7,7 @@ import { NewsList, NewsArticle } from './News.jsx';
 import { ChatList, ChatThread } from './Chat.jsx';
 import Orders from './Orders.jsx';
 import Profile from './Profile.jsx';
+import Settings from './Settings.jsx';
 
 // Screen registry — maps route id -> component (ids match the original vanilla app).
 export const SCREENS = {
@@ -31,4 +32,5 @@ export const SCREENS = {
   'chat-thread': ChatThread,
   'orders': Orders,
   'profile': Profile,
+  'settings': Settings,
 };

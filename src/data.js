@@ -71,9 +71,9 @@ export const TAXIS = [
 
 export const NEWS = [
   { img: 'yangilik', tag: "E'lon", tagBg: T.accent, title: 'Yorqishloqda yangi suv quvuri ishga tushdi', excerpt: "Markaziy ko'chalarga toza ichimlik suvi uzluksiz yetkazib berila boshlandi.", src: 'Tuman hokimligi', time: '2 soat oldin', views: '1 240' },
-  { img: 'yangilik', tag: 'Voqea', tagBg: '#2563EB', title: 'Bozor maydonida payshanba yarmarkasi', excerpt: 'Har payshanba kuni mahalliy fermerlar arzon narxda mahsulot sotadi.', src: 'Yorqishloq City', time: '5 soat oldin', views: '860' },
-  { img: 'yangilik', tag: 'Sport', tagBg: '#16A34A', title: "Yoshlar futbol turniri g'oliblari aniqlandi", excerpt: 'Finalda “Yorqishloq” jamoasi qo\'shni qishloq terma jamoasini yengdi.', src: 'Sport bo‘limi', time: 'kecha', views: '2 110' },
-  { img: 'yangilik', tag: 'Ogohlantirish', tagBg: '#DC2626', title: "Ertaga elektr ta'minoti vaqtincha cheklanadi", excerpt: "Profilaktika ishlari tufayli 09:00–13:00 oralig'ida tok o'chiriladi.", src: 'Elektr tarmoqlari', time: 'kecha', views: '3 540' },
+  { img: 'yangilik', tag: 'Voqea', tagBg: 'var(--info)', title: 'Bozor maydonida payshanba yarmarkasi', excerpt: 'Har payshanba kuni mahalliy fermerlar arzon narxda mahsulot sotadi.', src: 'Yorqishloq City', time: '5 soat oldin', views: '860' },
+  { img: 'yangilik', tag: 'Sport', tagBg: 'var(--success)', title: "Yoshlar futbol turniri g'oliblari aniqlandi", excerpt: 'Finalda “Yorqishloq” jamoasi qo\'shni qishloq terma jamoasini yengdi.', src: 'Sport bo‘limi', time: 'kecha', views: '2 110' },
+  { img: 'yangilik', tag: 'Ogohlantirish', tagBg: 'var(--danger)', title: "Ertaga elektr ta'minoti vaqtincha cheklanadi", excerpt: "Profilaktika ishlari tufayli 09:00–13:00 oralig'ida tok o'chiriladi.", src: 'Elektr tarmoqlari', time: 'kecha', views: '3 540' },
   { img: 'yangilik', tag: "E'lon", tagBg: T.accent, title: "Maktablarda yangi o'quv yiliga tayyorgarlik", excerpt: "Ta'mirlash ishlari yakunlanmoqda, sinflar jihozlanmoqda.", src: 'Xalq ta‘limi', time: '2 kun oldin', views: '720' },
 ];
 
