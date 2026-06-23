@@ -48,7 +48,7 @@ export function AdDetail() {
       <div className="scroll">
         <div style={css(`height:262px; flex:none; position:relative; overflow:hidden; ${TILE_D} display:flex; align-items:center; justify-content:center;`)}>
           <Ph t="avto rasm 1" sz={12} />
-          <div style={css('position:absolute; right:14px; top:14px; display:flex; gap:9px;')}>
+          <div style={css('position:absolute; right:14px; top:calc(14px + var(--tg-safe-top)); display:flex; gap:9px;')}>
             <span className="press" onClick={() => toast('Ulashish')} style={css('width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="share" style={{ fontSize: 20, color: 'var(--text)' }} /></span>
             <span className="press" onClick={() => toast("Sevimlilarga qo'shildi")} style={css('width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="favorite" fill style={{ fontSize: 20, color: 'var(--accent)' }} /></span>
           </div>

@@ -43,7 +43,7 @@ export function BarberPage() {
     <Screen>
       <div className="scroll">
         <div style={css(`height:200px; flex:none; position:relative; overflow:hidden; background-image:url('${asset('assets/salohiddin.jpeg')}'); background-size:cover; background-position:center;`)}>
-          <span className="press" onClick={() => toast("Sevimlilarga qo'shildi")} style={css('position:absolute; right:14px; top:14px; width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="favorite" fill style={{ fontSize: 20, color: 'var(--accent)' }} /></span>
+          <span className="press" onClick={() => toast("Sevimlilarga qo'shildi")} style={css('position:absolute; right:14px; top:calc(14px + var(--tg-safe-top)); width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="favorite" fill style={{ fontSize: 20, color: 'var(--accent)' }} /></span>
         </div>
         <div style={css('padding:16px 18px 0;')}>
           <div style={css('display:flex; align-items:flex-start; justify-content:space-between; gap:10px;')}>
