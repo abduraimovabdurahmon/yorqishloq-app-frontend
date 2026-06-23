@@ -3,6 +3,13 @@
   --accentLight:#FFC15E;
   --accentDeep:#EA580C;
   --accentSoft:#FFF3EA;
+  /* Safe-area insets. Default to CSS env() for plain browsers; inside Telegram
+     these get overwritten with the combined device + Telegram-UI insets so the
+     app chrome clears the fullscreen close/menu buttons. See src/tg.js. */
+  --tg-safe-top:env(safe-area-inset-top);
+  --tg-safe-bottom:env(safe-area-inset-bottom);
+  --tg-safe-left:env(safe-area-inset-left);
+  --tg-safe-right:env(safe-area-inset-right);
 }
 *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html,body,#root{ margin:0; height:100%; }
@@ -41,8 +48,8 @@ body{
 .hdr{
   flex:none; display:flex; align-items:center; justify-content:center;
   background:#FFFFFF; border-bottom:1px solid #F1EFED; position:relative;
-  height:calc(54px + env(safe-area-inset-top));
-  padding-top:env(safe-area-inset-top);
+  height:calc(54px + var(--tg-safe-top));
+  padding-top:var(--tg-safe-top);
 }
 .hdr .title{ font-size:16px; font-weight:700; color:#1C1917; }
 .hdr .back{ position:absolute; left:14px; font-size:24px; color:#1C1917; cursor:pointer; }
@@ -50,7 +57,7 @@ body{
 .scroll{ flex:1; min-height:0; min-width:0; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; display:flex; flex-direction:column; }
 .footer{
   flex:none; background:#FFFFFF; border-top:1px solid #F1EFED;
-  padding-bottom:calc(22px + env(safe-area-inset-bottom));
+  padding-bottom:calc(22px + var(--tg-safe-bottom));
 }
 .scroll::-webkit-scrollbar{ display:none; }
 .scroll{ scrollbar-width:none; -ms-overflow-style:none; }
@@ -61,7 +68,7 @@ body{
 .tabbar{
   flex:none; background:#FFFFFF; border-top:1px solid #F1EFED;
   display:flex; align-items:flex-start; padding-top:10px;
-  padding-bottom:calc(14px + env(safe-area-inset-bottom));
+  padding-bottom:calc(14px + var(--tg-safe-bottom));
 }
 .tabbar .tab{ flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer; }
 .tabbar .tab .ico{ font-size:25px; color:#A8A29E; }
