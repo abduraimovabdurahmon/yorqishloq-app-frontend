@@ -35,7 +35,7 @@ export function ChatList() {
 }
 
 export function ChatThread() {
-  const { back, toast } = useApp();
+  const { toast } = useApp();
   const In = ({ txt, time }) => (
     <div style={css('align-self:flex-start; max-width:78%; background:var(--surface); border-radius:16px 16px 16px 5px; padding:9px 13px; box-shadow:0 1px 4px rgba(0,0,0,0.08);')}><div style={css('font-size:14px; font-weight:500; color:var(--text); line-height:1.4;')}>{txt}</div><div style={css('font-size:10px; font-weight:500; color:var(--muted-2); text-align:right; margin-top:3px;')}>{time}</div></div>
   );
@@ -44,8 +44,7 @@ export function ChatThread() {
   );
   return (
     <Screen chat>
-      <div style={css('height:60px; flex:none; display:flex; align-items:center; gap:11px; background:var(--surface); border-bottom:1px solid var(--border); padding:0 14px; position:relative;')}>
-        <span className="press" onClick={back}><Icon s="arrow_back" style={{ fontSize: 24, color: 'var(--text)' }} /></span>
+      <div style={css('height:60px; flex:none; display:flex; align-items:center; gap:11px; background:var(--surface); border-bottom:1px solid var(--border); padding:0 16px; position:relative;')}>
         <div style={css('position:relative; flex:none;')}><Icon s="delivery_dining" style={{ width: 40, height: 40, borderRadius: '50%', background: 'var(--accentSoft)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 21, color: 'var(--accent)' }} /><span style={css('position:absolute; right:0; bottom:0; width:11px; height:11px; border-radius:50%; background:var(--online); border:2px solid var(--surface);')} /></div>
         <div style={css('flex:1; min-width:0;')}><div style={css('font-size:15px; font-weight:700; color:var(--text);')}>Doniyor (Kuryer)</div><div style={css('font-size:11.5px; font-weight:500; color:var(--success);')}>onlayn</div></div>
         <span className="press" onClick={() => toast("Qo'ng'iroq qilinmoqda…")}><Icon s="call" style={{ fontSize: 23, color: 'var(--accent)' }} /></span>

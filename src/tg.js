@@ -13,12 +13,16 @@ const TG = typeof window !== 'undefined' && window.Telegram ? window.Telegram.We
 function num(v) { return typeof v === 'number' && isFinite(v) ? v : 0; }
 
 // Push Telegram's safe-area insets into CSS custom properties.
+// The TOP inset is only needed in fullscreen, where the app draws behind the
+// floating close/menu buttons. In normal mode Telegram's own header already
+// reserves that space, so adding the inset would double-pad the top — keep it 0.
 function syncInsets() {
   if (!TG) return;
   const sa = TG.safeAreaInset || {};
   const ca = TG.contentSafeAreaInset || {};
+  const fullscreen = !!TG.isFullscreen;
   const root = document.documentElement.style;
-  root.setProperty('--tg-safe-top', (num(sa.top) + num(ca.top)) + 'px');
+  root.setProperty('--tg-safe-top', (fullscreen ? num(sa.top) + num(ca.top) : 0) + 'px');
   root.setProperty('--tg-safe-bottom', (num(sa.bottom) + num(ca.bottom)) + 'px');
   root.setProperty('--tg-safe-left', (num(sa.left) + num(ca.left)) + 'px');
   root.setProperty('--tg-safe-right', (num(sa.right) + num(ca.right)) + 'px');

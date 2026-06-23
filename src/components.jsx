@@ -11,14 +11,12 @@ export function Screen({ children, chat = false }) {
   return <div className={`screen${chat ? ' chat-bg' : ''} ${anim}`}>{children}</div>;
 }
 
-// Standard header (centered title, optional back + right action).
-export function Header({ title, back = false, rightIcon, onRight, onBackTo }) {
-  const app = useApp();
+// Standard header (centered title, optional right action).
+// No in-app back button — navigation back is handled by Telegram's native
+// BackButton (wired in App.jsx), so we don't render a duplicate arrow.
+export function Header({ title, rightIcon, onRight }) {
   return (
     <div className="hdr">
-      {back && (
-        <span className="ico back" onClick={() => (onBackTo ? app.tab(onBackTo) : app.back())}>arrow_back</span>
-      )}
       <span className="title">{title}</span>
       {rightIcon && (
         <span className="act-r" onClick={onRight}>

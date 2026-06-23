@@ -36,7 +36,7 @@ export function AdsList() {
 }
 
 export function AdDetail() {
-  const { go, back, toast } = useApp();
+  const { go, toast } = useApp();
   const thumb = (n, on) => (
     <div key={n} style={css(`flex:none; width:62px; height:62px; border-radius:12px; border:${on ? '2px solid var(--accent)' : '1px solid var(--border-2)'}; ${on ? 'background:repeating-linear-gradient(135deg,var(--tile-b),var(--tile-b) 7px,var(--tile-c) 7px,var(--tile-c) 14px);' : TILE_S} display:flex; align-items:center; justify-content:center;`)}><Ph t={String(n)} sz={9} /></div>
   );
@@ -48,7 +48,6 @@ export function AdDetail() {
       <div className="scroll">
         <div style={css(`height:262px; flex:none; position:relative; overflow:hidden; ${TILE_D} display:flex; align-items:center; justify-content:center;`)}>
           <Ph t="avto rasm 1" sz={12} />
-          <span className="press" onClick={back} style={css('position:absolute; left:14px; top:14px; width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="arrow_back" style={{ fontSize: 22, color: 'var(--text)' }} /></span>
           <div style={css('position:absolute; right:14px; top:14px; display:flex; gap:9px;')}>
             <span className="press" onClick={() => toast('Ulashish')} style={css('width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="share" style={{ fontSize: 20, color: 'var(--text)' }} /></span>
             <span className="press" onClick={() => toast("Sevimlilarga qo'shildi")} style={css('width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="favorite" fill style={{ fontSize: 20, color: 'var(--accent)' }} /></span>

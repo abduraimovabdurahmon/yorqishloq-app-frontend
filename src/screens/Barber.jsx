@@ -38,12 +38,11 @@ export function BarberList() {
 }
 
 export function BarberPage() {
-  const { go, back, toast } = useApp();
+  const { go, toast } = useApp();
   return (
     <Screen>
       <div className="scroll">
         <div style={css(`height:200px; flex:none; position:relative; overflow:hidden; background-image:url('${asset('assets/salohiddin.jpeg')}'); background-size:cover; background-position:center;`)}>
-          <span className="press" onClick={back} style={css('position:absolute; left:14px; top:14px; width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="arrow_back" style={{ fontSize: 22, color: 'var(--text)' }} /></span>
           <span className="press" onClick={() => toast("Sevimlilarga qo'shildi")} style={css('position:absolute; right:14px; top:14px; width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="favorite" fill style={{ fontSize: 20, color: 'var(--accent)' }} /></span>
         </div>
         <div style={css('padding:16px 18px 0;')}>

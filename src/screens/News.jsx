@@ -40,13 +40,12 @@ export function NewsList() {
 }
 
 export function NewsArticle() {
-  const { back, toast } = useApp();
+  const { toast } = useApp();
   return (
     <Screen>
       <div className="scroll">
         <div style={css('height:228px; flex:none; position:relative; overflow:hidden; background:repeating-linear-gradient(135deg,var(--tile-b),var(--tile-b) 11px,var(--tile-c) 11px,var(--tile-c) 22px); display:flex; align-items:center; justify-content:center;')}>
           <Ph t="yangilik rasm" sz={12} />
-          <span className="press" onClick={back} style={css('position:absolute; left:14px; top:14px; width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="arrow_back" style={{ fontSize: 22, color: 'var(--text)' }} /></span>
           <span className="press" onClick={() => toast('Ulashish')} style={css('position:absolute; right:14px; top:14px; width:38px; height:38px; border-radius:50%; background:var(--glass); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.12);')}><Icon s="share" style={{ fontSize: 20, color: 'var(--text)' }} /></span>
         </div>
         <div style={css('padding:18px 18px 0;')}>
